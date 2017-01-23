@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 var port     = process.env.PORT || 8080;
 
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost/droidRest');
+mongoose.connect('mongodb://areczek:polska123ds056009.mlab.com:56009/tamdse');
 var Contact     = require('./app/models/contact');
 
 var router = express.Router();
@@ -35,9 +35,9 @@ router.route('/contacts')
 
 		contact.save(function(err) {
 			if (err)
-				res.send(err);
+				res.send({success: false});
 
-			res.json({ message: 'Contact created!' });
+			res.json({success: true});
 		});
 
 		
