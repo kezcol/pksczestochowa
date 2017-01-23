@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 var port     = process.env.PORT || 8080;
 
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://areczek:polska123ds056009.mlab.com:56009/tamdse');
+mongoose.connect('mongodb://areczek:polska123@ds056009.mlab.com:56009/tamdse');
 var Contact     = require('./app/models/contact');
 
 var router = express.Router();
