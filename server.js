@@ -13,6 +13,7 @@ var port     = process.env.PORT || 8080;
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://areczek:polska123@ds056009.mlab.com:56009/tamdse');
 var Contact     = require('./app/models/contact');
+var Car 		= require('./app/models/car');
 
 var router = express.Router();
 
@@ -93,6 +94,33 @@ router.route('/contacts/:contact_id')
 		});
 	});
 
+	router.route('/cars')
+
+	.post(function(req, res) {
+		
+		var car = new Car();
+		car.brand = req.body.brand;
+		car.mark = req.body.mark;
+		car.price = req.body.price;
+
+		car.save(function(err) {
+			if (err)
+				res.send({success: false});
+
+			res.json({success: true});
+		});
+
+		
+	})
+
+	.get(function(req, res) {
+		Car.find(function(err, cars) {
+			if (err)
+				res.send(err);
+
+			res.json(cars);
+		});
+	});
 
 app.use('/api', router);
 
