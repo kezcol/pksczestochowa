@@ -27,6 +27,17 @@ router.get('/', function(req, res) {
 
 router.route('/stops')
 
+	.post(function(req, res) {
+		
+		var busStop = new BusStop();
+		contact.save(function(err) {
+			if (err)
+				res.send({err});
+
+			res.json({success: true});
+		});
+	})
+
 	.get(function(req, res) {
 		BusStop.find(function(err, stops) {
 			if (err)
