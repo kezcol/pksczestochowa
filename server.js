@@ -37,7 +37,7 @@ router.route('/contacts')
 
 		contact.save(function(err) {
 			if (err)
-				res.send({success: false});
+				res.send({err});
 
 			res.json({success: true});
 		});
