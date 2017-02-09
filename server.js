@@ -30,7 +30,7 @@ router.route('/stops')
 	.post(function(req, res) {
 		
 		var busStop = new BusStop();
-		contact.save(function(err) {
+		busStop.save(function(err) {
 			if (err)
 				res.send({err});
 
