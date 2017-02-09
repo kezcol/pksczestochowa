@@ -28,7 +28,7 @@ router.get('/', function(req, res) {
 router.route('/stops')
 
 	.get(function(req, res) {
-		Mainbase.find('przystanek', function(err, stops) {
+		Mainbase.find(function(err, stops) {
 			if (err)
 				res.send(err);
 			res.json(stops);
