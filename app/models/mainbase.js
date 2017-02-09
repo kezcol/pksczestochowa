@@ -15,4 +15,4 @@ var MainbaseSchema   = new Schema({
     km : Number
 });
 
-module.exports = mongoose.model('Mainbase', MainbaseSchema);
+module.exports = mongoose.model('mainbase', MainbaseSchema);
