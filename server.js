@@ -39,7 +39,7 @@ router.route('/stops')
 	})
 
 	.get(function(req, res) {
-		BusStop.find(function(err, stops) {
+		BusStop.find().distinct('przystanek', function(err, stops) {
 			if (err)
 				res.send(err);
 			res.json(stops);
