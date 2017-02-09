@@ -1,7 +1,7 @@
 var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
-var MainbaseSchema   = new Schema({
+var BusStopSchema   = new Schema({
     przystanek : String,
     numer : Number,
     godzina_prz : String,
@@ -15,4 +15,4 @@ var MainbaseSchema   = new Schema({
     km : Number
 });
 
-module.exports = mongoose.model('mainbase', MainbaseSchema);
+module.exports = mongoose.model('BusStop', BusStopSchema);
