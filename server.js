@@ -13,7 +13,7 @@ var port     = process.env.PORT || 8080;
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://sa:godmode@ds056549.mlab.com:56549/pksczestochowadb');
 
-var BusStop	= require('./app/models/mainbase');
+var BusStop	= require('./app/models/busstop');
 
 var router = express.Router();
 
