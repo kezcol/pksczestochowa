@@ -11,9 +11,9 @@ app.use(bodyParser.json());
 var port     = process.env.PORT || 8080;
 
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://areczek:polska123@ds056009.mlab.com:56009/tamdse');
-var Contact     = require('./app/models/contact');
-var Car 		= require('./app/models/car');
+mongoose.connect('mongodb://ios:godmode@ds056549.mlab.com:56549/pksczestochowadb');
+
+var Mainbase = require('./app/models/mainbase');
 
 var router = express.Router();
 
@@ -25,100 +25,13 @@ router.get('/', function(req, res) {
 	res.json({ message: 'Rest API v1' });	
 });
 
-router.route('/contacts')
-
-	.post(function(req, res) {
-		
-		var contact = new Contact();
-		contact.name = req.body.name;
-		contact.surname = req.body.surname;
-		contact.age = req.body.age;
-
-		contact.save(function(err) {
-			if (err)
-				res.send({success: false});
-
-			res.json({success: true});
-		});
-
-		
-	})
+router.route('/stops')
 
 	.get(function(req, res) {
-		Contact.find(function(err, contacts) {
+		Mainbase.find.distinct('przystanek', function(err, stops) {
 			if (err)
 				res.send(err);
-
-			res.json(contacts);
-		});
-	});
-
-router.route('/contacts/:contact_id')
-
-	.get(function(req, res) {
-		Contact.findById(req.params.contact_id, function(err, contact) {
-			if (err)
-				res.send(err);
-			res.json(contact);
-		});
-	})
-
-	.put(function(req, res) {
-		Contact.findById(req.params.contact_id, function(err, contact) {
-
-			if (err)
-				res.json({success: false});
-
-			contact.name = req.body.name;
-			contact.surname = req.body.surname;
-			contact.age = req.body.age;
-
-			contact.save(function(err) {
-				if (err)
-					res.json({success: false});
-
-				res.json({success: true});
-			});
-
-		});
-	})
-
-	.delete(function(req, res) {
-		Contact.remove({
-			_id: req.params.contact_id
-		}, function(err, contact) {
-			if (err)
-				res.json({success: false});
-
-			res.json({success: true});
-		});
-	});
-
-	router.route('/cars')
-
-	.post(function(req, res) {
-		
-		var car = new Car();
-		car.brand = req.body.brand;
-		car.mark = req.body.mark;
-		car.price = req.body.price;
-
-		car.save(function(err) {
-			if (err)
-				res.send({success: false});
-
-			res.json({success: true});
-		});
-
-		
-	})
-
-	.get(function(req, res) {
-		Car.find(function(err, cars) {
-			if (err)
-				res.send(err);
-
-			res.json(cars);
+			res.json(stops);
 		});
 	});
 
