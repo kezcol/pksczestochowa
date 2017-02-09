@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 var port     = process.env.PORT || 8080;
 
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://ios:godmode@ds056549.mlab.com:56549/pksczestochowadb');
+mongoose.connect('mongodb://sa:godmode@ds056549.mlab.com:56549/pksczestochowadb');
 
 var Mainbase	= require('./app/models/mainbase');
 var Contact     = require('./app/models/contact');
